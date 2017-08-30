@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="mail.php" method="post" onsubmit="return formValidation();">
+        <span id="nome">teste</span>
+        <input id="input_nome" type="text" onchange="nomeValidador()"/><br>
+        <span id="email">teste_email</span>
+        <input id="input_email" name="email" type="text" onchange="emailValidador()"/><br>
+
+        <input type="submit" value="enviar">
+    </form>
+    <script type="text/javascript" src="_js/vanilla_masker.js"></script>
+    <script type="text/javascript" src="_js/script.js"></script>    
+</body>
+</html>
