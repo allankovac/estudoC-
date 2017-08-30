@@ -1,25 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
 <?php
-$email = $_POST["email"]
-$to      = $email;
+include "banco.php";
 
-echo "meu email é"$email;
-/*
-$subject = 'the subject';
-$message = 'hello';
-$headers = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+$cadastrar = array();
+$conheceu = array();
+    
+if(isset($_POST['nome']) && $_POST['nome'] != ""){  
+    $cadastrar['bdnome'] =  $_POST['nome'];
+    if(isset($_POST['celular']) && $_POST['celular'] != ""){
+       $cadastrar['bdcelular'] =  $_POST['celular'];
+    }
+    if(isset($_POST['email']) && $_POST['email'] != ""){
+       $cadastrar['bdemail'] =  $_POST['email'];
+    }
+    if(isset($_POST['interece']) && $_POST['interece'] != ""){
+       $cadastrar['bdinterece'] =  $_POST['interece'];
+    }
+    
+    $conheceu = $_POST['conhece'];
+    
+    for($i=0;$i<count($conheceu);$i++){
+        switch ($conheceu[$i]){
+            case '1':
+                $cadastrar['facebook'] = 1;
+                break;
+            case '2':
+                $cadastrar['youtube'] = 1;
+                break;
+            case '3':
+                $cadastrar['google'] = 1;
+                break;
+            case '4':
+                $cadastrar['revista'] = 1; 
+                break;
+            case '5':
+                $cadastrar['evento'] = 1;
+                break;
+            case '6':
+                $cadastrar['amigos'] = 1;
+                break;
+            case '7':
+                $cadastrar['outros'] = 1;
+                break;
+        }
+    }
+   
+    adicionando($link,$cadastrar);
+}
 
-mail($to, $subject, $message, $headers);*/
+/*$formcontent="E-mail: {$cadastrar['bdemail']}";
+$recipient = "allan@conecturma.com.br";
+$subject = "[Conecturma] Registro Website";
+$mailheader = "De: {$cadastrar['bdemail'] } \r\n";
+if(mail($recipient, $subject, $formcontent, $mailheader)){
+    echo "Enviado!";
+}
+else{
+    echo "Erro!";
+}*/
+include "index.html";
 ?>
-</body>
-</html>
